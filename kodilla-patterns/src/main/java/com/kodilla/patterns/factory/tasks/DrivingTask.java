@@ -1,9 +1,10 @@
 package com.kodilla.patterns.factory.tasks;
 
 public final class DrivingTask implements Task {
-    final String taskName;
-    final String where;
-    final String using;
+    private final String taskName;
+    private final String where;
+    private final String using;
+    private boolean taskFlag = false;
 
     public DrivingTask(final String taskName, final String where, final String using) {
         this.taskName = taskName;
@@ -17,15 +18,12 @@ public final class DrivingTask implements Task {
 
     @Override
     public String executeTask() {
+        taskFlag=true;
         return "Task " + taskName + " is executed. You need go by " + using + " to " + where;
     }
 
     @Override
     public boolean isTaskExecuted() {
-        if (where == "Warsaw" && using == "car") {
-            return true;
-        } else {
-            return false;
-        }
+        return taskFlag;
     }
 }

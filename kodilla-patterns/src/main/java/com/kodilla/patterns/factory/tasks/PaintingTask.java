@@ -5,9 +5,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public final class PaintingTask implements Task {
-    final String taskName;
-    final String colour;
-    final String whatToPaint;
+    private final String taskName;
+    private final String colour;
+    private final String whatToPaint;
+    private boolean taskFlag = false;
 
     public PaintingTask(String taskName, String colour, String whatToPaint) {
         this.taskName = taskName;
@@ -21,18 +22,13 @@ public final class PaintingTask implements Task {
 
     @Override
     public String executeTask() {
+        taskFlag=true;
         return "Task "+ taskName+ " is executed. You need to paint on "+colour+" colour "+whatToPaint;
     }
 
     @Override
     public boolean isTaskExecuted() {
-        List<String> whatToPaintList= new ArrayList<>(Arrays.asList("garage", "bedroom","kitchen"));
-        if(whatToPaintList.contains(whatToPaint)){
-            return true;
-        }
-        else{
-            return false;
-        }
+    return taskFlag;
     }
 }
 
